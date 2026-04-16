@@ -19,29 +19,30 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      padding: 20px 12px;
+      padding: 16px 12px;
     }
 
     /* Слайд-шоу контейнер */
     .slideshow {
-      max-width: 760px;
+      max-width: 900px;
       width: 100%;
       position: relative;
     }
 
-    /* Карточка слайда */
+    /* Карточка слайда — фиксированная высота под экран */
     .slide {
       background: rgba(255, 255, 255, 0.85);
       backdrop-filter: blur(12px);
       -webkit-backdrop-filter: blur(12px);
-      border-radius: 48px;
-      padding: 32px 30px;
+      border-radius: 40px;
+      padding: 24px 30px;
       box-shadow: 0 25px 35px -10px rgba(0, 0, 0, 0.08), 
                   0 8px 20px rgba(0, 0, 0, 0.05),
                   inset 0 1px 0 rgba(255, 255, 255, 0.7);
       border: 1px solid rgba(255, 255, 255, 0.5);
       display: none;
-      min-height: 540px;
+      height: 580px;
+      overflow-y: auto;  /* на всякий случай, если контент вылезет */
       transition: opacity 0.25s;
     }
 
@@ -54,14 +55,14 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      margin-top: 20px;
+      margin-top: 16px;
     }
 
     .nav-btn {
-      background: rgba(245, 235, 225, 0.9);
+      background: rgba(245, 235, 225, 0.95);
       backdrop-filter: blur(6px);
       border: 1px solid #ddd0c0;
-      padding: 14px 28px;
+      padding: 12px 28px;
       border-radius: 60px;
       font-size: 18px;
       font-weight: 600;
@@ -69,7 +70,7 @@
       cursor: pointer;
       box-shadow: 0 8px 16px rgba(0,0,0,0.04);
       transition: all 0.2s;
-      border: 1px solid rgba(255,255,240,0.8);
+      border: 1px solid rgba(255,255,240,0.9);
     }
 
     .nav-btn:hover {
@@ -86,18 +87,18 @@
       font-size: 17px;
       font-weight: 500;
       color: #5f4a38;
-      background: rgba(255,250,240,0.7);
-      padding: 10px 22px;
+      background: rgba(255,250,240,0.8);
+      padding: 10px 26px;
       border-radius: 60px;
       backdrop-filter: blur(4px);
     }
 
     /* Типографика */
     h1 {
-      font-size: 36px;
+      font-size: 34px;
       font-weight: 700;
       color: #3a2c23;
-      margin-bottom: 10px;
+      margin-bottom: 8px;
       letter-spacing: -0.3px;
     }
 
@@ -105,74 +106,76 @@
       font-size: 28px;
       font-weight: 600;
       color: #5c4637;
-      margin-bottom: 18px;
+      margin-bottom: 14px;
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 10px;
     }
 
     h3 {
-      font-size: 22px;
+      font-size: 21px;
       font-weight: 600;
       color: #4a3729;
-      margin: 18px 0 10px;
+      margin: 14px 0 8px;
     }
 
     p {
-      font-size: 18px;
-      line-height: 1.5;
+      font-size: 17px;
+      line-height: 1.45;
       color: #2f241c;
-      margin-bottom: 18px;
+      margin-bottom: 14px;
     }
 
     .highlight {
-      background: rgba(250, 240, 225, 0.8);
-      padding: 18px 22px;
-      border-radius: 28px;
+      background: rgba(250, 240, 225, 0.9);
+      padding: 16px 20px;
+      border-radius: 26px;
       border-left: 6px solid #d4b89c;
-      margin: 18px 0;
+      margin: 14px 0;
     }
 
     .tagline {
-      font-size: 20px;
+      font-size: 19px;
       font-weight: 500;
       color: #624b37;
     }
 
-    /* График (система координат) */
+    /* График */
     .chart-container {
-      margin: 15px 0 10px;
-      padding: 10px 5px;
-    }
-
-    .axis-labels {
-      display: flex;
-      justify-content: space-between;
-      margin: 6px 0 0 10px;
-      font-weight: 500;
-      color: #6f5843;
+      margin: 8px 0 5px;
+      text-align: center;
     }
 
     canvas {
       display: block;
       width: 100%;
       height: auto;
-      background: rgba(255, 250, 240, 0.5);
+      max-height: 300px;
+      background: rgba(255, 250, 240, 0.6);
       border-radius: 32px;
-      padding: 8px;
+      padding: 5px;
+    }
+
+    .axis-labels {
+      display: flex;
+      justify-content: space-between;
+      margin: 2px 10px 0;
+      font-weight: 500;
+      color: #6f5843;
+      font-size: 16px;
     }
 
     /* Карточки стратегий */
     .strategy-card {
       background: white;
       border-radius: 30px;
-      padding: 20px 22px;
+      padding: 16px 22px;
       display: flex;
       align-items: center;
-      gap: 20px;
+      gap: 18px;
       box-shadow: 0 10px 18px -8px rgba(90, 60, 40, 0.06);
       border: 1px solid #f1e2d2;
-      margin-bottom: 16px;
+      margin-bottom: 12px;
     }
 
     .strategy-emoji {
@@ -200,25 +203,29 @@
       color: #5d411f;
     }
 
-    /* Кнопки на слайде */
+    /* Мозг боксы */
     .brain-diagram {
       display: flex;
-      gap: 16px;
-      margin: 20px 0;
+      gap: 14px;
+      margin: 16px 0;
     }
 
     .brain-box {
       flex: 1;
       background: #efe3d7;
       border-radius: 24px;
-      padding: 18px 12px;
+      padding: 16px 8px;
       text-align: center;
       border: 1px solid #dbcdbc;
     }
 
-    @media (max-width: 520px) {
-      .slide { padding: 24px 18px; }
-      h1 { font-size: 30px; }
+    /* Прокрутка внутри слайда (на всякий случай) */
+    .slide::-webkit-scrollbar { width: 4px; }
+    .slide::-webkit-scrollbar-thumb { background: #ccbbaa; border-radius: 10px; }
+
+    @media (max-width: 600px) {
+      .slide { padding: 20px 16px; height: 620px; }
+      h1 { font-size: 28px; }
       .strategy-card { flex-direction: column; text-align: center; }
       .brain-diagram { flex-direction: column; }
     }
@@ -226,26 +233,26 @@
 </head>
 <body>
 <div class="slideshow">
-  <!-- СЛАЙД 1: График с 5 стратегиями на плоскости -->
+  <!-- СЛАЙД 1: График с 5 стратегиями (укрупнённые эмодзи) -->
   <div class="slide active" id="slide1">
     <h1 style="display: flex; gap: 8px;">📈 5 стратегий конфликта</h1>
     <p class="tagline">Ось X: забота об интересах подростка · Ось Y: забота об интересах родителя</p>
     <div class="chart-container">
-      <canvas id="strategyChart" width="600" height="360" style="width:100%; height:auto;"></canvas>
+      <canvas id="strategyChart" width="720" height="340" style="width:100%; height:auto; max-height:300px;"></canvas>
     </div>
     <div class="axis-labels">
-      <span>🧑‍🎤 Подросток →</span>
-      <span>⬆️ Родитель</span>
+      <span>🧑‍🎤 Подросток (кооперация) →</span>
+      <span>⬆️ Родитель (напористость)</span>
     </div>
-    <div style="margin-top: 24px; display: flex; flex-wrap: wrap; gap: 10px; justify-content: center;">
-      <span style="background:#f0dbca; padding:6px 14px; border-radius: 40px;">🦈 Акула</span>
-      <span style="background:#f0dbca; padding:6px 14px; border-radius: 40px;">🧸 Мишка</span>
-      <span style="background:#f0dbca; padding:6px 14px; border-radius: 40px;">🐢 Черепаха</span>
-      <span style="background:#f0dbca; padding:6px 14px; border-radius: 40px;">🦊 Лиса</span>
-      <span style="background:#e2d1be; padding:6px 18px; border-radius: 40px; font-weight:700;">🦉 Сова ★</span>
+    <div style="margin-top: 14px; display: flex; flex-wrap: wrap; gap: 10px; justify-content: center;">
+      <span style="background:#f0dbca; padding:6px 14px; border-radius: 40px; font-size:16px;">🦈 Акула</span>
+      <span style="background:#f0dbca; padding:6px 14px; border-radius: 40px; font-size:16px;">🧸 Мишка</span>
+      <span style="background:#f0dbca; padding:6px 14px; border-radius: 40px; font-size:16px;">🐢 Черепаха</span>
+      <span style="background:#f0dbca; padding:6px 14px; border-radius: 40px; font-size:16px;">🦊 Лиса</span>
+      <span style="background:#e2d1be; padding:6px 18px; border-radius: 40px; font-weight:700; font-size:16px;">🦉 Сова ★</span>
     </div>
-    <div class="highlight" style="margin-top: 20px;">
-      <span style="font-size: 24px; margin-right: 10px;">🧠</span> 
+    <div class="highlight" style="margin-top: 12px;">
+      <span style="font-size: 26px; margin-right: 10px;">🧠</span> 
       <strong>Сотрудничество (Сова)</strong> — единственная стратегия, где выигрывают оба.<br>
       Остальные — либо проигрыш отношений, либо уступка с ущербом.
     </div>
@@ -258,24 +265,24 @@
       <div class="brain-box">
         <div style="font-size: 48px;">🔥</div>
         <div style="font-weight:700;">Амигдала</div>
-        <div style="font-size: 14px; margin-top: 6px;">«Пожарная сигнализация»<br>Бей · Беги · Замри</div>
+        <div style="font-size: 15px; margin-top: 6px;">«Пожарная сигнализация»<br>Бей · Беги · Замри</div>
       </div>
       <div class="brain-box">
         <div style="font-size: 48px;">👔</div>
         <div style="font-weight:700;">Префронтальная кора</div>
-        <div style="font-size: 14px; margin-top: 6px;">«Кабинет директора»<br>формируется к 21–23 годам</div>
+        <div style="font-size: 15px; margin-top: 6px;">«Кабинет директора»<br>формируется к 21–23 годам</div>
       </div>
     </div>
     <p><strong>«Сын, убери в комнате»</strong> → мозг подростка слышит: <br>⚠️ «Мной недовольны! Опасность!»</p>
-    <div style="background:#e8dbcd; border-radius: 28px; padding: 16px;">
-      <div>💥 <strong>Нападение (бей)</strong> — «Отстань!»</div>
-      <div>🏃 <strong>Бегство (беги)</strong> — хлопанье дверью, телефон</div>
+    <div style="background:#e8dbcd; border-radius: 28px; padding: 14px 18px;">
+      <div style="margin-bottom:6px;">💥 <strong>Нападение (бей)</strong> — «Отстань!»</div>
+      <div style="margin-bottom:6px;">🏃 <strong>Бегство (беги)</strong> — хлопанье дверью, телефон</div>
       <div>🧊 <strong>Замирание (замри)</strong> — ступор, игнор</div>
     </div>
-    <p style="margin-top: 16px;">🧘 Наша задача — не включаться в его тревогу, а стать «внешней префронтальной корой».</p>
+    <p style="margin-top: 14px;">🧘 Наша задача — не включаться в его тревогу, а стать «внешней префронтальной корой».</p>
   </div>
 
-  <!-- СЛАЙД 3: Акула (Соперничество) -->
+  <!-- СЛАЙД 3: Акула -->
   <div class="slide" id="slide3">
     <h2>🦈 Акула · Соперничество</h2>
     <div class="strategy-card">
@@ -287,7 +294,7 @@
     <div class="highlight">⚠️ Амигдала родителя кричит «Надо контролировать!», а подростка — «Защищайся!»</div>
   </div>
 
-  <!-- СЛАЙД 4: Плюшевый мишка (Приспособление) -->
+  <!-- СЛАЙД 4: Плюшевый мишка -->
   <div class="slide" id="slide4">
     <h2>🧸 Плюшевый мишка · Приспособление</h2>
     <div class="strategy-card">
@@ -299,7 +306,7 @@
     <div class="highlight">🕊️ Иногда уступка нужна, но системно это размывает границы.</div>
   </div>
 
-  <!-- СЛАЙД 5: Черепаха (Избегание) -->
+  <!-- СЛАЙД 5: Черепаха -->
   <div class="slide" id="slide5">
     <h2>🐢 Черепаха · Избегание</h2>
     <div class="strategy-card">
@@ -311,7 +318,7 @@
     <div class="highlight">🐚 Избегание копит напряжение, «пожарная сигнализация» не выключается.</div>
   </div>
 
-  <!-- СЛАЙД 6: Лиса (Компромисс) -->
+  <!-- СЛАЙД 6: Лиса -->
   <div class="slide" id="slide6">
     <h2>🦊 Лиса · Компромисс</h2>
     <div class="strategy-card">
@@ -319,11 +326,11 @@
       <div><strong>Частичный выигрыш / 50/50</strong></div>
     </div>
     <p>«Давай в 22:00, по‑честному».</p>
-    <p>🤝 Рабочий вариант для бытовых ситуаций.<br>⚖️ Но обе стороны чуть недополучили: родитель всё равно волнуется, подросток недоволен.</p>
+    <p>🤝 Рабочий вариант для бытовых ситуаций.<br>⚖️ Но обе стороны чуть недополучили.</p>
     <div class="highlight">🦊 Лиса — хороший тактический ход, но не всегда укрепляет доверие.</div>
   </div>
 
-  <!-- СЛАЙД 7: Сова (Сотрудничество) — лучший -->
+  <!-- СЛАЙД 7: Сова -->
   <div class="slide" id="slide7">
     <h2>🦉 Сова · Сотрудничество <span class="badge badge-best">ВЫИГРАЛ-ВЫИГРАЛ</span></h2>
     <div class="strategy-card" style="border:2px solid #dac2a8;">
@@ -335,19 +342,19 @@
     <div class="highlight">🦉 Единственный способ, где отношения укрепляются, а границы сохраняются.</div>
   </div>
 
-  <!-- СЛАЙД 8: Итог + как стать «внешней корой» -->
+  <!-- СЛАЙД 8: Итог -->
   <div class="slide" id="slide8">
-    <h2>🧠 Как стать «кабинетом директора» для подростка</h2>
-    <p style="font-size: 20px; margin: 20px 0;">«Я вижу, у тебя сработала сигнализация. Давай разберёмся, тут нет настоящего пожара».</p>
-    <div style="background:#e5d6c6; border-radius: 32px; padding: 20px;">
-      <ul style="font-size: 18px; line-height: 2; list-style-type: none;">
+    <h2>🧠 Как стать «кабинетом директора»</h2>
+    <p style="font-size: 19px; margin: 16px 0;">«Я вижу, у тебя сработала сигнализация. Давай разберёмся, тут нет настоящего пожара».</p>
+    <div style="background:#e5d6c6; border-radius: 32px; padding: 18px 20px;">
+      <ul style="font-size: 18px; line-height: 1.9; list-style-type: none;">
         <li>✅ Не включаться в его «пожарную тревогу»</li>
         <li>✅ Говорить о своих чувствах (Я-высказывания)</li>
         <li>✅ Искать решение вместе (стратегия Совы)</li>
         <li>✅ Помнить: безопасность — условие для роста «коры»</li>
       </ul>
     </div>
-    <p style="margin-top: 26px;">🎯 Когда мы кричим в ответ — подтверждаем: «мир опасен». Спокойствие взрослого даёт опыт безопасности.</p>
+    <p style="margin-top: 20px;">🎯 Когда мы кричим в ответ — подтверждаем: «мир опасен». Спокойствие взрослого даёт опыт безопасности.</p>
   </div>
 
   <!-- Навигация -->
@@ -383,97 +390,94 @@
       if (current < total - 1) { current++; updateSlide(current); }
     });
 
-    // Отрисовка графика на Canvas
+    // График с УКРУПНЁННЫМИ эмодзи и подписями
     const canvas = document.getElementById('strategyChart');
     if (canvas) {
       const ctx = canvas.getContext('2d');
-      const w = 600, h = 360;
+      const w = 720, h = 340;
       canvas.width = w; canvas.height = h;
 
       function drawChart() {
         ctx.clearRect(0, 0, w, h);
-        
-        // фон
         ctx.fillStyle = '#fdf7f0';
         ctx.fillRect(0, 0, w, h);
         
-        // сетка
+        // Сетка
         ctx.lineWidth = 1;
         ctx.strokeStyle = '#d4bfaa';
         ctx.beginPath();
         for (let i=0; i<=4; i++) {
-          let x = 60 + i * 120;
-          ctx.moveTo(x, 30);
-          ctx.lineTo(x, h-30);
-          let y = 30 + i * 75;
-          ctx.moveTo(60, y);
-          ctx.lineTo(w-30, y);
+          let x = 80 + i * 140;
+          ctx.moveTo(x, 25);
+          ctx.lineTo(x, h-25);
+          let y = 25 + i * 70;
+          ctx.moveTo(80, y);
+          ctx.lineTo(w-40, y);
         }
         ctx.stroke();
 
-        // оси
-        ctx.lineWidth = 2.5;
+        // Оси
+        ctx.lineWidth = 3;
         ctx.strokeStyle = '#8b6f58';
         ctx.beginPath();
-        // ось Y (родитель)
-        ctx.moveTo(60, 30);
-        ctx.lineTo(60, h-20);
-        // ось X (подросток)
-        ctx.moveTo(50, h-60);
-        ctx.lineTo(w-20, h-60);
+        ctx.moveTo(80, 25);
+        ctx.lineTo(80, h-20);
+        ctx.moveTo(70, h-60);
+        ctx.lineTo(w-30, h-60);
         ctx.stroke();
 
-        // подписи осей
-        ctx.font = '500 13px Segoe UI, sans-serif';
+        // Подписи осей
+        ctx.font = '500 14px Segoe UI, sans-serif';
         ctx.fillStyle = '#5f4a38';
-        ctx.fillText('🧑‍🎤 Подросток (кооперация) →', w-190, h-30);
+        ctx.fillText('🧑‍🎤 Подросток (кооперация) →', w-230, h-35);
         ctx.save();
-        ctx.translate(25, 170);
+        ctx.translate(30, 180);
         ctx.rotate(-Math.PI/2);
+        ctx.font = '500 14px Segoe UI, sans-serif';
         ctx.fillText('⬆️ Родитель (напористость)', 0, 0);
         ctx.restore();
 
-        // Точки стратегий
+        // Точки — эмодзи крупнее
         const points = [
-          { name:'Акула', x:0.15, y:0.85, emoji:'🦈', color:'#a0715b' },       // высокая напористость, низкая кооперация
-          { name:'Мишка', x:0.85, y:0.15, emoji:'🧸', color:'#b5916e' },       // низкая напористость, высокая кооперация
-          { name:'Черепаха', x:0.15, y:0.15, emoji:'🐢', color:'#8f7a68' },    // низкая-низкая
-          { name:'Лиса', x:0.5, y:0.5, emoji:'🦊', color:'#c49a6c' },          // компромисс
-          { name:'Сова', x:0.85, y:0.85, emoji:'🦉', color:'#7c9a7a' }         // высокая-высокая (сотрудничество)
+          { name:'Акула', x:0.12, y:0.85, emoji:'🦈', color:'#a0715b' },
+          { name:'Мишка', x:0.88, y:0.12, emoji:'🧸', color:'#b5916e' },
+          { name:'Черепаха', x:0.12, y:0.12, emoji:'🐢', color:'#8f7a68' },
+          { name:'Лиса', x:0.5, y:0.5, emoji:'🦊', color:'#c49a6c' },
+          { name:'Сова', x:0.88, y:0.88, emoji:'🦉', color:'#7c9a7a' }
         ];
 
         points.forEach(p => {
-          let px = 60 + p.x * (w-100);
-          let py = (h-60) - p.y * (h-90) + 15;
+          let px = 80 + p.x * (w-130);
+          let py = (h-60) - p.y * (h-100) + 15;
           
-          // круг
+          // круг побольше
           ctx.beginPath();
-          ctx.arc(px, py, 14, 0, 2*Math.PI);
-          ctx.fillStyle = p.color + '30';
+          ctx.arc(px, py, 20, 0, 2*Math.PI);
+          ctx.fillStyle = p.color + '25';
           ctx.fill();
-          ctx.lineWidth = 2.5;
+          ctx.lineWidth = 3;
           ctx.strokeStyle = p.color;
           ctx.stroke();
           
-          // эмодзи
-          ctx.font = '22px "Segoe UI Emoji", "Apple Color Emoji", sans-serif';
+          // ЭМОДЗИ КРУПНЕЕ
+          ctx.font = '32px "Segoe UI Emoji", "Apple Color Emoji", "Noto Color Emoji", sans-serif';
           ctx.fillStyle = '#2f241c';
-          ctx.fillText(p.emoji, px-13, py+8);
+          ctx.fillText(p.emoji, px-18, py+12);
           
-          // подпись
-          ctx.font = '500 12px Segoe UI, sans-serif';
+          // Подпись крупнее
+          ctx.font = '600 15px Segoe UI, sans-serif';
           ctx.fillStyle = '#3f2e21';
-          ctx.fillText(p.name, px-22, py-20);
+          ctx.fillText(p.name, px-28, py-28);
         });
 
-        // легенда: выиграл/проиграл
-        ctx.font = '500 12px Segoe UI';
+        // Легенда
+        ctx.font = '500 13px Segoe UI';
         ctx.fillStyle = '#6b4f3c';
-        ctx.fillText('Выиграл-Проиграл', 420, 50);
-        ctx.fillText('Проиграл-Выиграл', 120, 290);
-        ctx.fillText('Проиграл-Проиграл', 90, 70);
-        ctx.fillText('Компромисс', 280, 190);
-        ctx.fillText('⭐ Выиграл-Выиграл', 450, 280);
+        ctx.fillText('Выиграл-Проиграл', 500, 45);
+        ctx.fillText('Проиграл-Выиграл', 150, 290);
+        ctx.fillText('Проиграл-Проиграл', 100, 55);
+        ctx.fillText('Компромисс', 340, 200);
+        ctx.fillText('⭐ Выиграл-Выиграл', 530, 290);
       }
       drawChart();
       window.addEventListener('resize', () => { drawChart(); });
