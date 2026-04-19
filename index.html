@@ -253,7 +253,7 @@
 </head>
 <body>
 <div class="slideshow">
-  <!-- СЛАЙД 1: График с 5 стратегиями (без зверей) -->
+  <!-- СЛАЙД 1: График с 5 стратегиями (исправленное расположение) -->
   <div class="slide active" id="slide1">
     <h1>📊 5 стратегий поведения в конфликте</h1>
     <p class="tagline">Модель Томаса-Килманна</p>
@@ -261,8 +261,8 @@
       <canvas id="strategyChart" width="720" height="330" style="width:100%; height:auto; max-height:290px;"></canvas>
     </div>
     <div class="axis-labels">
-      <span>◀ Интересы подростка (кооперация) ▶</span>
-      <span>▲ Интересы родителя (напористость) ▼</span>
+      <span>◀ Кооперация (внимание к интересам подростка) ▶</span>
+      <span>▲ Напористость (отстаивание интересов родителя) ▼</span>
     </div>
     <div style="margin-top: 16px; display: flex; flex-wrap: wrap; gap: 10px; justify-content: center;">
       <span class="legend-tag">Соперничество</span>
@@ -273,7 +273,7 @@
     </div>
     <div class="highlight">
       <strong>Сотрудничество</strong> — единственная стратегия, где выигрывают обе стороны.<br>
-      Остальные ведут либо к проигрышу отношений, либо к уступкам с ущербом.
+      Высокая напористость + высокая кооперация = поиск решения, удовлетворяющего обоих.
     </div>
   </div>
 
@@ -305,7 +305,7 @@
     <div class="strategy-row">
       <div class="strategy-marker" style="background:#a0715b;"></div>
       <div class="strategy-content">
-        <div class="strategy-title">Выигрыш-Проигрыш <span class="strategy-sub">давление авторитетом</span></div>
+        <div class="strategy-title">Выигрыш-Проигрыш <span class="strategy-sub">высокая напористость, низкая кооперация</span></div>
       </div>
     </div>
     <p>«Будешь дома в 21:00! Я сказал!»</p>
@@ -319,7 +319,7 @@
     <div class="strategy-row">
       <div class="strategy-marker" style="background:#b5916e;"></div>
       <div class="strategy-content">
-        <div class="strategy-title">Проигрыш-Выигрыш <span class="strategy-sub">уступка ради мира</span></div>
+        <div class="strategy-title">Проигрыш-Выигрыш <span class="strategy-sub">низкая напористость, высокая кооперация</span></div>
       </div>
     </div>
     <p>«Ладно, иди до 23:00, только без скандала».</p>
@@ -333,7 +333,7 @@
     <div class="strategy-row">
       <div class="strategy-marker" style="background:#8f7a68;"></div>
       <div class="strategy-content">
-        <div class="strategy-title">Проигрыш-Проигрыш <span class="strategy-sub">уход от решения</span></div>
+        <div class="strategy-title">Проигрыш-Проигрыш <span class="strategy-sub">низкая напористость, низкая кооперация</span></div>
       </div>
     </div>
     <p>«Делай что хочешь...» (уход в телефон, молчание).</p>
@@ -347,7 +347,7 @@
     <div class="strategy-row">
       <div class="strategy-marker" style="background:#c49a6c;"></div>
       <div class="strategy-content">
-        <div class="strategy-title">Частичный выигрыш <span class="strategy-sub">50/50</span></div>
+        <div class="strategy-title">Частичный выигрыш <span class="strategy-sub">средняя напористость, средняя кооперация</span></div>
       </div>
     </div>
     <p>«Давай в 22:00, по‑честному».</p>
@@ -361,7 +361,7 @@
     <div class="strategy-row" style="border:2px solid #d4c3b0;">
       <div class="strategy-marker" style="background:#7c9a7a;"></div>
       <div class="strategy-content">
-        <div class="strategy-title">Обсуждаем интересы, а не позиции</div>
+        <div class="strategy-title">Высокая напористость + высокая кооперация</div>
       </div>
     </div>
     <p>💬 «Я вижу, тебе важно побыть с друзьями. И мне важно знать, что ты в безопасности. Как решим?»</p>
@@ -417,7 +417,7 @@
       if (current < total - 1) { current++; updateSlide(current); }
     });
 
-    // График без зверей — только цветные маркеры и названия
+    // График с правильным расположением стратегий
     const canvas = document.getElementById('strategyChart');
     if (canvas) {
       const ctx = canvas.getContext('2d');
@@ -456,20 +456,22 @@
         // Подписи осей
         ctx.font = '500 13px Segoe UI, sans-serif';
         ctx.fillStyle = '#5f4a38';
-        ctx.fillText('Интересы подростка (кооперация) →', w-240, h-35);
+        ctx.fillText('Кооперация (внимание к интересам подростка) →', w-300, h-35);
         ctx.save();
         ctx.translate(28, 180);
         ctx.rotate(-Math.PI/2);
-        ctx.fillText('Интересы родителя (напористость) →', 0, 0);
+        ctx.fillText('Напористость (отстаивание интересов родителя) →', 0, 0);
         ctx.restore();
 
-        // Точки — цветные круги без эмодзи
+        // Точки — ПРАВИЛЬНОЕ РАСПОЛОЖЕНИЕ
+        // X: кооперация (0 = низкая, 1 = высокая)
+        // Y: напористость (0 = низкая, 1 = высокая)
         const points = [
-          { name:'Соперничество', x:0.12, y:0.85, color:'#a0715b' },
-          { name:'Приспособление', x:0.88, y:0.12, color:'#b5916e' },
-          { name:'Избегание', x:0.12, y:0.12, color:'#8f7a68' },
-          { name:'Компромисс', x:0.5, y:0.5, color:'#c49a6c' },
-          { name:'Сотрудничество', x:0.88, y:0.88, color:'#7c9a7a' }
+          { name:'Соперничество', x:0.12, y:0.88, color:'#a0715b' },      // высокая напористость, низкая кооперация
+          { name:'Приспособление', x:0.88, y:0.12, color:'#b5916e' },      // низкая напористость, высокая кооперация
+          { name:'Избегание', x:0.12, y:0.12, color:'#8f7a68' },           // низкая напористость, низкая кооперация
+          { name:'Компромисс', x:0.5, y:0.5, color:'#c49a6c' },            // средняя напористость, средняя кооперация
+          { name:'Сотрудничество', x:0.88, y:0.88, color:'#7c9a7a' }       // высокая напористость, высокая кооперация
         ];
 
         points.forEach(p => {
@@ -494,17 +496,29 @@
           // Название
           ctx.font = '600 14px Segoe UI, sans-serif';
           ctx.fillStyle = '#3f2e21';
-          ctx.fillText(p.name, px - 45, py - 24);
+          
+          // Смещение подписи в зависимости от положения
+          if (p.name === 'Соперничество') {
+            ctx.fillText(p.name, px - 50, py - 24);
+          } else if (p.name === 'Приспособление') {
+            ctx.fillText(p.name, px - 50, py + 36);
+          } else if (p.name === 'Избегание') {
+            ctx.fillText(p.name, px - 40, py + 36);
+          } else if (p.name === 'Компромисс') {
+            ctx.fillText(p.name, px - 40, py - 24);
+          } else if (p.name === 'Сотрудничество') {
+            ctx.fillText(p.name, px - 50, py - 24);
+          }
         });
 
         // Легенда
         ctx.font = '500 12px Segoe UI';
         ctx.fillStyle = '#6b4f3c';
-        ctx.fillText('Выигрыш-Проигрыш', 480, 45);
-        ctx.fillText('Проигрыш-Выигрыш', 130, 290);
-        ctx.fillText('Проигрыш-Проигрыш', 100, 55);
-        ctx.fillText('Компромисс (50/50)', 330, 200);
-        ctx.fillText('★ Выигрыш-Выигрыш', 530, 290);
+        ctx.fillText('Выигрыш-Проигрыш', 460, 45);
+        ctx.fillText('Проигрыш-Выигрыш', 460, 300);
+        ctx.fillText('Проигрыш-Проигрыш', 80, 300);
+        ctx.fillText('Компромисс (50/50)', 320, 200);
+        ctx.fillText('★ Выигрыш-Выигрыш', 500, 45);
       }
       drawChart();
       window.addEventListener('resize', () => { drawChart(); });
