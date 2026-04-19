@@ -29,17 +29,17 @@
     }
 
     .slide {
-      background: rgba(255, 255, 255, 0.85);
+      background: rgba(255, 255, 255, 0.9);
       backdrop-filter: blur(12px);
       -webkit-backdrop-filter: blur(12px);
       border-radius: 40px;
-      padding: 28px 32px;
+      padding: 24px 28px;
       box-shadow: 0 25px 35px -10px rgba(0, 0, 0, 0.08), 
                   0 8px 20px rgba(0, 0, 0, 0.05),
                   inset 0 1px 0 rgba(255, 255, 255, 0.7);
       border: 1px solid rgba(255, 255, 255, 0.5);
       display: none;
-      height: 560px;
+      height: 580px;
       overflow-y: auto;
       transition: opacity 0.25s;
     }
@@ -93,7 +93,7 @@
       font-size: 32px;
       font-weight: 600;
       color: #3a2c23;
-      margin-bottom: 12px;
+      margin-bottom: 16px;
       text-align: center;
     }
 
@@ -119,62 +119,18 @@
       margin: 16px 0;
     }
 
-    .chart-wrapper {
-      display: flex;
-      gap: 15px;
-      align-items: flex-start;
-    }
-
-    .chart-area {
-      flex: 2.2;
-    }
-
-    .chart-legend {
-      flex: 1;
-      background: #f5ebe2;
-      border-radius: 24px;
-      padding: 20px 15px;
-      margin-top: 30px;
-    }
-
-    .legend-title {
-      font-weight: 700;
-      color: #4a3729;
-      margin-bottom: 16px;
-      font-size: 16px;
+    .chart-container {
       text-align: center;
-    }
-
-    .legend-item {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      margin-bottom: 16px;
-    }
-
-    .legend-color {
-      width: 18px;
-      height: 18px;
-      border-radius: 50%;
-      flex-shrink: 0;
-    }
-
-    .legend-name {
-      font-weight: 600;
-      color: #4a3729;
-      font-size: 15px;
-    }
-
-    .legend-result {
-      font-size: 12px;
-      color: #7a6452;
+      margin: 0 auto;
     }
 
     canvas {
       display: block;
       width: 100%;
       height: auto;
-      background: rgba(255, 250, 240, 0.5);
+      max-width: 800px;
+      margin: 0 auto;
+      background: #fdf7f0;
       border-radius: 32px;
     }
 
@@ -265,7 +221,6 @@
       .slide { padding: 20px 16px; height: 600px; }
       h1 { font-size: 26px; }
       h2 { font-size: 22px; }
-      .chart-wrapper { flex-direction: column; }
       .strategy-row { flex-wrap: wrap; }
       .brain-diagram { flex-direction: column; }
     }
@@ -273,100 +228,57 @@
 </head>
 <body>
 <div class="slideshow">
-  <!-- СЛАЙД 1: График + легенда справа -->
+  <!-- СЛАЙД 1: График со всеми подписями -->
   <div class="slide active" id="slide1">
     <h1>📊 5 стратегий поведения в конфликте</h1>
-    <div class="chart-wrapper">
-      <div class="chart-area">
-        <canvas id="strategyChart" width="520" height="420" style="width:100%; height:auto; max-height:420px;"></canvas>
-      </div>
-      <div class="chart-legend">
-        <div class="legend-title">СТРАТЕГИИ</div>
-        <div class="legend-item">
-          <div class="legend-color" style="background:#a0715b;"></div>
-          <div>
-            <div class="legend-name">Соперничество</div>
-            <div class="legend-result">Выигрыш-Проигрыш</div>
-          </div>
-        </div>
-        <div class="legend-item">
-          <div class="legend-color" style="background:#b5916e;"></div>
-          <div>
-            <div class="legend-name">Приспособление</div>
-            <div class="legend-result">Проигрыш-Выигрыш</div>
-          </div>
-        </div>
-        <div class="legend-item">
-          <div class="legend-color" style="background:#8f7a68;"></div>
-          <div>
-            <div class="legend-name">Избегание</div>
-            <div class="legend-result">Проигрыш-Проигрыш</div>
-          </div>
-        </div>
-        <div class="legend-item">
-          <div class="legend-color" style="background:#c49a6c;"></div>
-          <div>
-            <div class="legend-name">Компромисс</div>
-            <div class="legend-result">50/50</div>
-          </div>
-        </div>
-        <div class="legend-item">
-          <div class="legend-color" style="background:#7c9a7a;"></div>
-          <div>
-            <div class="legend-name">⭐ Сотрудничество</div>
-            <div class="legend-result">Выигрыш-Выигрыш</div>
-          </div>
-        </div>
-        <div style="margin-top: 20px; padding-top: 12px; border-top: 1px dashed #c4b2a0;">
-          <p style="font-size: 13px; color: #5f4a38; margin-bottom: 0;">
-            <strong>Ось X</strong> — Кооперация<br>
-            <strong>Ось Y</strong> — Напористость
-          </p>
-        </div>
-      </div>
+    <div class="chart-container">
+      <canvas id="strategyChart" width="800" height="450" style="width:100%; height:auto;"></canvas>
     </div>
-    <p style="text-align: center; margin-top: 8px; font-size: 15px; color: #6f5843;">
+    <p style="text-align: center; margin-top: 12px; font-size: 15px; color: #6f5843;">
       Модель Томаса-Килманна
     </p>
   </div>
 
-  <!-- СЛАЙД 2: Подробное описание стратегий -->
+  <!-- СЛАЙД 2: Характеристики стратегий -->
   <div class="slide" id="slide2">
-    <h2>📋 Стратегии: характеристики</h2>
+    <h2>📋 Характеристики стратегий</h2>
     <div class="strategy-row">
       <div class="strategy-marker" style="background:#a0715b;"></div>
       <div class="strategy-content">
         <div class="strategy-title">Соперничество <span class="strategy-sub">Выигрыш-Проигрыш</span></div>
-        <p style="margin-bottom: 0;">Высокая напористость, низкая кооперация. Родитель продавливает свою позицию.</p>
+        <p style="margin-bottom: 0;">Высокая напористость, низкая кооперация.</p>
       </div>
     </div>
     <div class="strategy-row">
       <div class="strategy-marker" style="background:#b5916e;"></div>
       <div class="strategy-content">
         <div class="strategy-title">Приспособление <span class="strategy-sub">Проигрыш-Выигрыш</span></div>
-        <p style="margin-bottom: 0;">Низкая напористость, высокая кооперация. Родитель уступает подростку.</p>
+        <p style="margin-bottom: 0;">Низкая напористость, высокая кооперация.</p>
       </div>
     </div>
     <div class="strategy-row">
       <div class="strategy-marker" style="background:#8f7a68;"></div>
       <div class="strategy-content">
         <div class="strategy-title">Избегание <span class="strategy-sub">Проигрыш-Проигрыш</span></div>
-        <p style="margin-bottom: 0;">Низкая напористость, низкая кооперация. Конфликт замалчивается.</p>
+        <p style="margin-bottom: 0;">Низкая напористость, низкая кооперация.</p>
       </div>
     </div>
     <div class="strategy-row">
       <div class="strategy-marker" style="background:#c49a6c;"></div>
       <div class="strategy-content">
-        <div class="strategy-title">Компромисс <span class="strategy-sub">Частичный выигрыш</span></div>
-        <p style="margin-bottom: 0;">Средние показатели по обеим осям. Взаимные уступки.</p>
+        <div class="strategy-title">Компромисс <span class="strategy-sub">50/50</span></div>
+        <p style="margin-bottom: 0;">Средняя напористость, средняя кооперация.</p>
       </div>
     </div>
     <div class="strategy-row" style="border:2px solid #d4c3b0;">
       <div class="strategy-marker" style="background:#7c9a7a;"></div>
       <div class="strategy-content">
         <div class="strategy-title">⭐ Сотрудничество <span class="strategy-sub">Выигрыш-Выигрыш</span></div>
-        <p style="margin-bottom: 0;">Высокая напористость + высокая кооперация. Поиск решения, удовлетворяющего обоих.</p>
+        <p style="margin-bottom: 0;">Высокая напористость + высокая кооперация.</p>
       </div>
+    </div>
+    <div class="highlight" style="margin-top: 20px;">
+      <strong>Сотрудничество</strong> — единственная стратегия, где обе стороны полностью удовлетворяют свои интересы.
     </div>
   </div>
 
@@ -440,7 +352,7 @@
     <div class="strategy-row">
       <div class="strategy-marker" style="background:#c49a6c;"></div>
       <div class="strategy-content">
-        <div class="strategy-title">Частичный выигрыш (50/50)</div>
+        <div class="strategy-title">50/50</div>
       </div>
     </div>
     <p>«Давай в 22:00, по‑честному».</p>
@@ -510,15 +422,17 @@
       if (current < total - 1) { current++; updateSlide(current); }
     });
 
-    // График — только точки, легенда справа
+    // График с чёткими подписями
     const canvas = document.getElementById('strategyChart');
     if (canvas) {
       const ctx = canvas.getContext('2d');
-      const w = 520, h = 400;
+      const w = 800, h = 450;
       canvas.width = w; canvas.height = h;
 
       function drawChart() {
         ctx.clearRect(0, 0, w, h);
+        
+        // Фон
         ctx.fillStyle = '#fdf7f0';
         ctx.fillRect(0, 0, w, h);
         
@@ -527,90 +441,133 @@
         ctx.strokeStyle = '#d4bfaa';
         ctx.beginPath();
         for (let i=0; i<=4; i++) {
-          let x = 70 + i * 95;
-          ctx.moveTo(x, 30);
-          ctx.lineTo(x, h-40);
-          let y = 30 + i * 75;
-          ctx.moveTo(70, y);
-          ctx.lineTo(w-30, y);
+          let x = 120 + i * 140;
+          ctx.moveTo(x, 50);
+          ctx.lineTo(x, h-50);
+          let y = 50 + i * 80;
+          ctx.moveTo(120, y);
+          ctx.lineTo(w-50, y);
         }
         ctx.stroke();
 
         // Оси
-        ctx.lineWidth = 2.5;
+        ctx.lineWidth = 3;
         ctx.strokeStyle = '#8b6f58';
         ctx.beginPath();
-        ctx.moveTo(70, 30);
-        ctx.lineTo(70, h-30);
-        ctx.moveTo(60, h-70);
-        ctx.lineTo(w-20, h-70);
+        ctx.moveTo(120, 50);
+        ctx.lineTo(120, h-40);
+        ctx.moveTo(110, h-90);
+        ctx.lineTo(w-30, h-90);
         ctx.stroke();
 
         // Стрелки
         ctx.fillStyle = '#8b6f58';
         ctx.beginPath();
-        ctx.moveTo(w-20, h-70);
-        ctx.lineTo(w-35, h-78);
-        ctx.lineTo(w-35, h-62);
+        ctx.moveTo(w-30, h-90);
+        ctx.lineTo(w-50, h-100);
+        ctx.lineTo(w-50, h-80);
         ctx.fill();
         
         ctx.beginPath();
-        ctx.moveTo(70, 30);
-        ctx.lineTo(62, 15);
-        ctx.lineTo(78, 15);
+        ctx.moveTo(120, 50);
+        ctx.lineTo(108, 30);
+        ctx.lineTo(132, 30);
         ctx.fill();
 
         // Подписи осей
-        ctx.font = '600 13px Segoe UI, sans-serif';
-        ctx.fillStyle = '#5f4a38';
-        ctx.fillText('КООПЕРАЦИЯ →', w-140, h-45);
+        ctx.font = '600 15px Segoe UI, sans-serif';
+        ctx.fillStyle = '#4a3729';
+        ctx.fillText('КООПЕРАЦИЯ', w-180, h-60);
+        ctx.font = '500 12px Segoe UI, sans-serif';
+        ctx.fillStyle = '#6f5843';
+        ctx.fillText('(внимание к интересам подростка)', w-230, h-40);
         
         ctx.save();
-        ctx.translate(30, 180);
+        ctx.translate(45, 220);
         ctx.rotate(-Math.PI/2);
-        ctx.font = '600 13px Segoe UI, sans-serif';
-        ctx.fillText('НАПОРИСТОСТЬ →', 0, 0);
+        ctx.font = '600 15px Segoe UI, sans-serif';
+        ctx.fillStyle = '#4a3729';
+        ctx.fillText('НАПОРИСТОСТЬ', 0, 0);
+        ctx.restore();
+        ctx.save();
+        ctx.translate(65, 300);
+        ctx.rotate(-Math.PI/2);
+        ctx.font = '500 12px Segoe UI, sans-serif';
+        ctx.fillStyle = '#6f5843';
+        ctx.fillText('(отстаивание интересов родителя)', 0, 0);
         ctx.restore();
 
-        // Точки стратегий (без подписей)
+        // Метки низкая/высокая
+        ctx.font = '500 13px Segoe UI';
+        ctx.fillStyle = '#8b6f58';
+        ctx.fillText('НИЗКАЯ', 50, h-80);
+        ctx.fillText('ВЫСОКАЯ', w-100, h-80);
+        ctx.fillText('НИЗКАЯ', 50, 45);
+        ctx.fillText('ВЫСОКАЯ', 50, h-180);
+
+        // Точки стратегий с ПРАВИЛЬНЫМИ координатами
         const points = [
-          { x:0.10, y:0.88, color:'#a0715b' },  // Соперничество
-          { x:0.88, y:0.10, color:'#b5916e' },  // Приспособление
-          { x:0.10, y:0.10, color:'#8f7a68' },  // Избегание
-          { x:0.48, y:0.48, color:'#c49a6c' },  // Компромисс
-          { x:0.88, y:0.88, color:'#7c9a7a' }   // Сотрудничество
+          { name:'СОПЕРНИЧЕСТВО', result:'Выигрыш-Проигрыш', x:0.08, y:0.90, color:'#a0715b' },
+          { name:'ПРИСПОСОБЛЕНИЕ', result:'Проигрыш-Выигрыш', x:0.90, y:0.08, color:'#b5916e' },
+          { name:'ИЗБЕГАНИЕ', result:'Проигрыш-Проигрыш', x:0.08, y:0.08, color:'#8f7a68' },
+          { name:'КОМПРОМИСС', result:'50/50', x:0.48, y:0.48, color:'#c49a6c' },
+          { name:'СОТРУДНИЧЕСТВО', result:'Выигрыш-Выигрыш', x:0.90, y:0.90, color:'#7c9a7a' }
         ];
 
         points.forEach(p => {
-          let px = 70 + p.x * (w-110);
-          let py = (h-70) - p.y * (h-120) + 15;
+          let px = 120 + p.x * (w-180);
+          let py = (h-90) - p.y * (h-160) + 15;
           
-          // Внешний круг
+          // Круг
           ctx.beginPath();
-          ctx.arc(px, py, 16, 0, 2*Math.PI);
+          ctx.arc(px, py, 18, 0, 2*Math.PI);
           ctx.fillStyle = p.color + '35';
           ctx.fill();
-          ctx.lineWidth = 3;
+          ctx.lineWidth = 3.5;
           ctx.strokeStyle = p.color;
           ctx.stroke();
           
           // Внутренний круг
           ctx.beginPath();
-          ctx.arc(px, py, 8, 0, 2*Math.PI);
+          ctx.arc(px, py, 9, 0, 2*Math.PI);
           ctx.fillStyle = p.color;
           ctx.fill();
           ctx.lineWidth = 2;
           ctx.strokeStyle = '#fff';
           ctx.stroke();
+          
+          // Название стратегии
+          ctx.font = 'bold 14px Segoe UI, sans-serif';
+          ctx.fillStyle = '#3a2c23';
+          
+          // Подписи разнесены, чтобы не наслаивались
+          if (p.name === 'СОПЕРНИЧЕСТВО') {
+            ctx.fillText(p.name, px + 25, py - 15);
+            ctx.font = '12px Segoe UI, sans-serif';
+            ctx.fillStyle = '#6f5843';
+            ctx.fillText(p.result, px + 25, py + 5);
+          } else if (p.name === 'ПРИСПОСОБЛЕНИЕ') {
+            ctx.fillText(p.name, px - 140, py + 35);
+            ctx.font = '12px Segoe UI, sans-serif';
+            ctx.fillStyle = '#6f5843';
+            ctx.fillText(p.result, px - 140, py + 52);
+          } else if (p.name === 'ИЗБЕГАНИЕ') {
+            ctx.fillText(p.name, px + 25, py + 35);
+            ctx.font = '12px Segoe UI, sans-serif';
+            ctx.fillStyle = '#6f5843';
+            ctx.fillText(p.result, px + 25, py + 52);
+          } else if (p.name === 'КОМПРОМИСС') {
+            ctx.fillText(p.name, px - 70, py - 20);
+            ctx.font = '12px Segoe UI, sans-serif';
+            ctx.fillStyle = '#6f5843';
+            ctx.fillText(p.result, px - 45, py - 2);
+          } else if (p.name === 'СОТРУДНИЧЕСТВО') {
+            ctx.fillText('⭐ ' + p.name, px - 150, py - 15);
+            ctx.font = 'bold 12px Segoe UI, sans-serif';
+            ctx.fillStyle = '#4a3729';
+            ctx.fillText(p.result, px - 140, py + 5);
+          }
         });
-
-        // Метки низкая/высокая
-        ctx.font = '500 11px Segoe UI';
-        ctx.fillStyle = '#8b6f58';
-        ctx.fillText('Низкая', 30, h-60);
-        ctx.fillText('Высокая', w-55, h-60);
-        ctx.fillText('Низкая', 30, 25);
-        ctx.fillText('Высокая', 30, h-130);
       }
       drawChart();
       window.addEventListener('resize', () => { drawChart(); });
