@@ -23,7 +23,7 @@
     }
 
     .slideshow {
-      max-width: 900px;
+      max-width: 950px;
       width: 100%;
       position: relative;
     }
@@ -90,22 +90,22 @@
     }
 
     h1 {
-      font-size: 34px;
+      font-size: 32px;
       font-weight: 600;
       color: #3a2c23;
-      margin-bottom: 16px;
+      margin-bottom: 12px;
       text-align: center;
     }
 
     h2 {
-      font-size: 28px;
+      font-size: 26px;
       font-weight: 600;
       color: #5c4637;
       margin-bottom: 16px;
     }
 
     p {
-      font-size: 17px;
+      font-size: 16px;
       line-height: 1.5;
       color: #2f241c;
       margin-bottom: 14px;
@@ -119,9 +119,55 @@
       margin: 16px 0;
     }
 
-    .chart-container {
-      margin: 0;
+    .chart-wrapper {
+      display: flex;
+      gap: 15px;
+      align-items: flex-start;
+    }
+
+    .chart-area {
+      flex: 2.2;
+    }
+
+    .chart-legend {
+      flex: 1;
+      background: #f5ebe2;
+      border-radius: 24px;
+      padding: 20px 15px;
+      margin-top: 30px;
+    }
+
+    .legend-title {
+      font-weight: 700;
+      color: #4a3729;
+      margin-bottom: 16px;
+      font-size: 16px;
       text-align: center;
+    }
+
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
+    .legend-color {
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    .legend-name {
+      font-weight: 600;
+      color: #4a3729;
+      font-size: 15px;
+    }
+
+    .legend-result {
+      font-size: 12px;
+      color: #7a6452;
     }
 
     canvas {
@@ -212,107 +258,115 @@
       margin-bottom: 0;
     }
 
-    .legend-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 16px;
-      margin-top: 20px;
-    }
-
-    .legend-item {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      background: #f5ebe2;
-      border-radius: 20px;
-      padding: 14px 18px;
-    }
-
-    .legend-color {
-      width: 20px;
-      height: 20px;
-      border-radius: 6px;
-    }
-
-    .legend-text {
-      font-weight: 600;
-      color: #4a3729;
-    }
-
-    .legend-desc {
-      font-size: 14px;
-      color: #6f5843;
-    }
-
     .slide::-webkit-scrollbar { width: 4px; }
     .slide::-webkit-scrollbar-thumb { background: #ccbbaa; border-radius: 10px; }
 
-    @media (max-width: 600px) {
-      .slide { padding: 20px 18px; height: 600px; }
-      h1 { font-size: 28px; }
-      h2 { font-size: 24px; }
+    @media (max-width: 700px) {
+      .slide { padding: 20px 16px; height: 600px; }
+      h1 { font-size: 26px; }
+      h2 { font-size: 22px; }
+      .chart-wrapper { flex-direction: column; }
       .strategy-row { flex-wrap: wrap; }
       .brain-diagram { flex-direction: column; }
-      .legend-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
 <body>
 <div class="slideshow">
-  <!-- СЛАЙД 1: Только график -->
+  <!-- СЛАЙД 1: График + легенда справа -->
   <div class="slide active" id="slide1">
     <h1>📊 5 стратегий поведения в конфликте</h1>
-    <div class="chart-container">
-      <canvas id="strategyChart" width="760" height="420" style="width:100%; height:auto; max-height:460px;"></canvas>
+    <div class="chart-wrapper">
+      <div class="chart-area">
+        <canvas id="strategyChart" width="520" height="420" style="width:100%; height:auto; max-height:420px;"></canvas>
+      </div>
+      <div class="chart-legend">
+        <div class="legend-title">СТРАТЕГИИ</div>
+        <div class="legend-item">
+          <div class="legend-color" style="background:#a0715b;"></div>
+          <div>
+            <div class="legend-name">Соперничество</div>
+            <div class="legend-result">Выигрыш-Проигрыш</div>
+          </div>
+        </div>
+        <div class="legend-item">
+          <div class="legend-color" style="background:#b5916e;"></div>
+          <div>
+            <div class="legend-name">Приспособление</div>
+            <div class="legend-result">Проигрыш-Выигрыш</div>
+          </div>
+        </div>
+        <div class="legend-item">
+          <div class="legend-color" style="background:#8f7a68;"></div>
+          <div>
+            <div class="legend-name">Избегание</div>
+            <div class="legend-result">Проигрыш-Проигрыш</div>
+          </div>
+        </div>
+        <div class="legend-item">
+          <div class="legend-color" style="background:#c49a6c;"></div>
+          <div>
+            <div class="legend-name">Компромисс</div>
+            <div class="legend-result">50/50</div>
+          </div>
+        </div>
+        <div class="legend-item">
+          <div class="legend-color" style="background:#7c9a7a;"></div>
+          <div>
+            <div class="legend-name">⭐ Сотрудничество</div>
+            <div class="legend-result">Выигрыш-Выигрыш</div>
+          </div>
+        </div>
+        <div style="margin-top: 20px; padding-top: 12px; border-top: 1px dashed #c4b2a0;">
+          <p style="font-size: 13px; color: #5f4a38; margin-bottom: 0;">
+            <strong>Ось X</strong> — Кооперация<br>
+            <strong>Ось Y</strong> — Напористость
+          </p>
+        </div>
+      </div>
     </div>
+    <p style="text-align: center; margin-top: 8px; font-size: 15px; color: #6f5843;">
+      Модель Томаса-Килманна
+    </p>
   </div>
 
-  <!-- СЛАЙД 2: Легенда и пояснения -->
+  <!-- СЛАЙД 2: Подробное описание стратегий -->
   <div class="slide" id="slide2">
-    <h2>📋 Модель Томаса-Килманна</h2>
-    <p style="margin-bottom: 20px;">Две оси: напористость (отстаивание своих интересов) и кооперация (внимание к интересам другого)</p>
-    
-    <div class="legend-grid">
-      <div class="legend-item">
-        <div class="legend-color" style="background:#a0715b;"></div>
-        <div>
-          <div class="legend-text">Соперничество</div>
-          <div class="legend-desc">Выигрыш-Проигрыш</div>
-        </div>
-      </div>
-      <div class="legend-item">
-        <div class="legend-color" style="background:#b5916e;"></div>
-        <div>
-          <div class="legend-text">Приспособление</div>
-          <div class="legend-desc">Проигрыш-Выигрыш</div>
-        </div>
-      </div>
-      <div class="legend-item">
-        <div class="legend-color" style="background:#8f7a68;"></div>
-        <div>
-          <div class="legend-text">Избегание</div>
-          <div class="legend-desc">Проигрыш-Проигрыш</div>
-        </div>
-      </div>
-      <div class="legend-item">
-        <div class="legend-color" style="background:#c49a6c;"></div>
-        <div>
-          <div class="legend-text">Компромисс</div>
-          <div class="legend-desc">Частичный выигрыш (50/50)</div>
-        </div>
-      </div>
-      <div class="legend-item" style="grid-column: span 2;">
-        <div class="legend-color" style="background:#7c9a7a;"></div>
-        <div>
-          <div class="legend-text">⭐ Сотрудничество — Выигрыш-Выигрыш</div>
-          <div class="legend-desc">Высокая напористость + высокая кооперация</div>
-        </div>
+    <h2>📋 Стратегии: характеристики</h2>
+    <div class="strategy-row">
+      <div class="strategy-marker" style="background:#a0715b;"></div>
+      <div class="strategy-content">
+        <div class="strategy-title">Соперничество <span class="strategy-sub">Выигрыш-Проигрыш</span></div>
+        <p style="margin-bottom: 0;">Высокая напористость, низкая кооперация. Родитель продавливает свою позицию.</p>
       </div>
     </div>
-
-    <div class="highlight" style="margin-top: 24px;">
-      <strong>Сотрудничество</strong> — единственная стратегия, где обе стороны полностью удовлетворяют свои интересы.<br>
-      Обсуждаются не позиции («хочу до 23:00»), а глубинные потребности.
+    <div class="strategy-row">
+      <div class="strategy-marker" style="background:#b5916e;"></div>
+      <div class="strategy-content">
+        <div class="strategy-title">Приспособление <span class="strategy-sub">Проигрыш-Выигрыш</span></div>
+        <p style="margin-bottom: 0;">Низкая напористость, высокая кооперация. Родитель уступает подростку.</p>
+      </div>
+    </div>
+    <div class="strategy-row">
+      <div class="strategy-marker" style="background:#8f7a68;"></div>
+      <div class="strategy-content">
+        <div class="strategy-title">Избегание <span class="strategy-sub">Проигрыш-Проигрыш</span></div>
+        <p style="margin-bottom: 0;">Низкая напористость, низкая кооперация. Конфликт замалчивается.</p>
+      </div>
+    </div>
+    <div class="strategy-row">
+      <div class="strategy-marker" style="background:#c49a6c;"></div>
+      <div class="strategy-content">
+        <div class="strategy-title">Компромисс <span class="strategy-sub">Частичный выигрыш</span></div>
+        <p style="margin-bottom: 0;">Средние показатели по обеим осям. Взаимные уступки.</p>
+      </div>
+    </div>
+    <div class="strategy-row" style="border:2px solid #d4c3b0;">
+      <div class="strategy-marker" style="background:#7c9a7a;"></div>
+      <div class="strategy-content">
+        <div class="strategy-title">⭐ Сотрудничество <span class="strategy-sub">Выигрыш-Выигрыш</span></div>
+        <p style="margin-bottom: 0;">Высокая напористость + высокая кооперация. Поиск решения, удовлетворяющего обоих.</p>
+      </div>
     </div>
   </div>
 
@@ -322,11 +376,11 @@
     <div class="brain-diagram">
       <div class="brain-box">
         <h3>🔥 Амигдала</h3>
-        <p><strong>«Пожарная сигнализация»</strong><br>Реагирует мгновенно: опасность — включай сирену. Бей · Беги · Замри.</p>
+        <p><strong>«Пожарная сигнализация»</strong><br>Реагирует мгновенно. Бей · Беги · Замри.</p>
       </div>
       <div class="brain-box">
         <h3>👔 Префронтальная кора</h3>
-        <p><strong>«Кабинет директора»</strong><br>Анализ, самоконтроль, планирование. Формируется к 21–23 годам.</p>
+        <p><strong>«Кабинет директора»</strong><br>Анализ, самоконтроль. Формируется к 21–23 годам.</p>
       </div>
     </div>
     <p><strong>«Сын, убери в комнате»</strong> → мозг подростка слышит:<br>⚠️ «Мной недовольны! Опасность!»</p>
@@ -335,68 +389,68 @@
       <div style="margin-bottom:6px;"><strong>Бегство (беги)</strong> — хлопанье дверью, уход в телефон</div>
       <div><strong>Замирание (замри)</strong> — ступор, игнорирование</div>
     </div>
-    <p style="margin-top: 14px;">Наша задача — не включаться в его тревогу, а стать «внешней префронтальной корой».</p>
+    <p style="margin-top: 14px;">Наша задача — не включаться в тревогу, а стать «внешней префронтальной корой».</p>
   </div>
 
-  <!-- СЛАЙД 4: Соперничество -->
+  <!-- СЛАЙД 4: Соперничество подробно -->
   <div class="slide" id="slide4">
     <h2>Соперничество</h2>
     <div class="strategy-row">
       <div class="strategy-marker" style="background:#a0715b;"></div>
       <div class="strategy-content">
-        <div class="strategy-title">Выигрыш-Проигрыш <span class="strategy-sub">высокая напористость, низкая кооперация</span></div>
+        <div class="strategy-title">Выигрыш-Проигрыш</div>
       </div>
     </div>
     <p>«Будешь дома в 21:00! Я сказал!»</p>
     <p>Подросток: бунт, саботаж, скрытая агрессия.<br>Итог: граница соблюдена, контакт потерян.</p>
-    <div class="highlight">Амигдала родителя: «Надо контролировать!» Амигдала подростка: «Защищайся!»</div>
+    <div class="highlight">Амигдала родителя: «Контролировать!» Амигдала подростка: «Защищаться!»</div>
   </div>
 
-  <!-- СЛАЙД 5: Приспособление -->
+  <!-- СЛАЙД 5: Приспособление подробно -->
   <div class="slide" id="slide5">
     <h2>Приспособление</h2>
     <div class="strategy-row">
       <div class="strategy-marker" style="background:#b5916e;"></div>
       <div class="strategy-content">
-        <div class="strategy-title">Проигрыш-Выигрыш <span class="strategy-sub">низкая напористость, высокая кооперация</span></div>
+        <div class="strategy-title">Проигрыш-Выигрыш</div>
       </div>
     </div>
     <p>«Ладно, иди до 23:00, только без скандала».</p>
-    <p>Подросток делает вывод: «Родителей можно продавить».<br>Родитель теряет авторитет, границы размываются.</p>
-    <div class="highlight">Системные уступки формируют у подростка ощущение вседозволенности.</div>
+    <p>Подросток: «Родителей можно продавить».<br>Родитель теряет авторитет, границы размываются.</p>
+    <div class="highlight">Системные уступки формируют ощущение вседозволенности.</div>
   </div>
 
-  <!-- СЛАЙД 6: Избегание -->
+  <!-- СЛАЙД 6: Избегание подробно -->
   <div class="slide" id="slide6">
     <h2>Избегание</h2>
     <div class="strategy-row">
       <div class="strategy-marker" style="background:#8f7a68;"></div>
       <div class="strategy-content">
-        <div class="strategy-title">Проигрыш-Проигрыш <span class="strategy-sub">низкая напористость, низкая кооперация</span></div>
+        <div class="strategy-title">Проигрыш-Проигрыш</div>
       </div>
     </div>
     <p>«Делай что хочешь...» (уход в телефон, молчание).</p>
-    <p>Подросток чувствует себя брошенным, тревога растёт.<br>Родитель остаётся в неведении, проблема не решается.</p>
+    <p>Подросток чувствует себя брошенным.<br>Родитель остаётся в неведении.</p>
     <div class="highlight">Избегание копит напряжение. «Пожарная сигнализация» не выключается.</div>
   </div>
 
-  <!-- СЛАЙД 7: Компромисс -->
+  <!-- СЛАЙД 7: Компромисс подробно -->
   <div class="slide" id="slide7">
     <h2>Компромисс</h2>
     <div class="strategy-row">
       <div class="strategy-marker" style="background:#c49a6c;"></div>
       <div class="strategy-content">
-        <div class="strategy-title">Частичный выигрыш <span class="strategy-sub">средняя напористость, средняя кооперация</span></div>
+        <div class="strategy-title">Частичный выигрыш (50/50)</div>
       </div>
     </div>
     <p>«Давай в 22:00, по‑честному».</p>
     <p>Рабочий вариант для бытовых ситуаций.<br>Но обе стороны получают лишь часть желаемого.</p>
-    <div class="highlight">Компромисс — тактический ход, но не всегда укрепляет доверие.</div>
+    <div class="highlight">Компромисс — тактический ход, но не укрепляет доверие глубоко.</div>
   </div>
 
-  <!-- СЛАЙД 8: Сотрудничество -->
+  <!-- СЛАЙД 8: Сотрудничество подробно -->
   <div class="slide" id="slide8">
-    <h2>Сотрудничество <span class="badge badge-best">ВЫИГРЫШ-ВЫИГРЫШ</span></h2>
+    <h2>⭐ Сотрудничество <span class="badge badge-best">ВЫИГРЫШ-ВЫИГРЫШ</span></h2>
     <div class="strategy-row" style="border:2px solid #d4c3b0;">
       <div class="strategy-marker" style="background:#7c9a7a;"></div>
       <div class="strategy-content">
@@ -411,13 +465,13 @@
   <!-- СЛАЙД 9: Итог -->
   <div class="slide" id="slide9">
     <h2>Как стать «кабинетом директора»</h2>
-    <p style="font-size: 19px; margin: 16px 0;">«Я вижу, у тебя сработала сигнализация. Давай разберёмся — тут нет настоящего пожара».</p>
+    <p style="font-size: 18px; margin: 16px 0;">«Я вижу, у тебя сработала сигнализация. Давай разберёмся — тут нет пожара».</p>
     <div style="background:#e5d6c6; border-radius: 28px; padding: 18px 22px;">
-      <ul style="font-size: 18px; line-height: 2; list-style-type: none;">
-        <li>✓ Не включаться в его «пожарную тревогу»</li>
+      <ul style="font-size: 17px; line-height: 2; list-style-type: none;">
+        <li>✓ Не включаться в «пожарную тревогу»</li>
         <li>✓ Говорить о своих чувствах (Я-высказывания)</li>
-        <li>✓ Искать решение вместе (стратегия Сотрудничества)</li>
-        <li>✓ Помнить: безопасность — условие для развития «коры»</li>
+        <li>✓ Искать решение вместе (Сотрудничество)</li>
+        <li>✓ Безопасность — условие для развития «коры»</li>
       </ul>
     </div>
     <p style="margin-top: 20px;">Когда мы кричим в ответ — подтверждаем: «мир опасен». Спокойствие взрослого даёт опыт безопасности.</p>
@@ -456,11 +510,11 @@
       if (current < total - 1) { current++; updateSlide(current); }
     });
 
-    // График — чистый и чёткий
+    // График — только точки, легенда справа
     const canvas = document.getElementById('strategyChart');
     if (canvas) {
       const ctx = canvas.getContext('2d');
-      const w = 760, h = 420;
+      const w = 520, h = 400;
       canvas.width = w; canvas.height = h;
 
       function drawChart() {
@@ -469,82 +523,74 @@
         ctx.fillRect(0, 0, w, h);
         
         // Сетка
-        ctx.lineWidth = 1.5;
+        ctx.lineWidth = 1.2;
         ctx.strokeStyle = '#d4bfaa';
         ctx.beginPath();
         for (let i=0; i<=4; i++) {
-          let x = 100 + i * 140;
-          ctx.moveTo(x, 40);
+          let x = 70 + i * 95;
+          ctx.moveTo(x, 30);
           ctx.lineTo(x, h-40);
-          let y = 40 + i * 80;
-          ctx.moveTo(100, y);
-          ctx.lineTo(w-50, y);
+          let y = 30 + i * 75;
+          ctx.moveTo(70, y);
+          ctx.lineTo(w-30, y);
         }
         ctx.stroke();
 
         // Оси
-        ctx.lineWidth = 3;
+        ctx.lineWidth = 2.5;
         ctx.strokeStyle = '#8b6f58';
         ctx.beginPath();
-        ctx.moveTo(100, 40);
-        ctx.lineTo(100, h-30);
-        ctx.moveTo(90, h-80);
-        ctx.lineTo(w-30, h-80);
+        ctx.moveTo(70, 30);
+        ctx.lineTo(70, h-30);
+        ctx.moveTo(60, h-70);
+        ctx.lineTo(w-20, h-70);
         ctx.stroke();
 
         // Стрелки
         ctx.fillStyle = '#8b6f58';
         ctx.beginPath();
-        ctx.moveTo(w-30, h-80);
-        ctx.lineTo(w-50, h-90);
-        ctx.lineTo(w-50, h-70);
+        ctx.moveTo(w-20, h-70);
+        ctx.lineTo(w-35, h-78);
+        ctx.lineTo(w-35, h-62);
         ctx.fill();
         
         ctx.beginPath();
-        ctx.moveTo(100, 40);
-        ctx.lineTo(90, 20);
-        ctx.lineTo(110, 20);
+        ctx.moveTo(70, 30);
+        ctx.lineTo(62, 15);
+        ctx.lineTo(78, 15);
         ctx.fill();
 
         // Подписи осей
-        ctx.font = '600 15px Segoe UI, sans-serif';
+        ctx.font = '600 13px Segoe UI, sans-serif';
         ctx.fillStyle = '#5f4a38';
-        ctx.fillText('КООПЕРАЦИЯ', w-200, h-50);
-        ctx.font = '500 13px Segoe UI, sans-serif';
-        ctx.fillText('(внимание к интересам подростка)', w-240, h-30);
+        ctx.fillText('КООПЕРАЦИЯ →', w-140, h-45);
         
         ctx.save();
-        ctx.translate(40, 200);
+        ctx.translate(30, 180);
         ctx.rotate(-Math.PI/2);
-        ctx.font = '600 15px Segoe UI, sans-serif';
-        ctx.fillText('НАПОРИСТОСТЬ', 0, 0);
-        ctx.restore();
-        ctx.save();
-        ctx.translate(55, 280);
-        ctx.rotate(-Math.PI/2);
-        ctx.font = '500 13px Segoe UI, sans-serif';
-        ctx.fillText('(отстаивание интересов родителя)', 0, 0);
+        ctx.font = '600 13px Segoe UI, sans-serif';
+        ctx.fillText('НАПОРИСТОСТЬ →', 0, 0);
         ctx.restore();
 
-        // Точки стратегий
+        // Точки стратегий (без подписей)
         const points = [
-          { name:'Соперничество', x:0.10, y:0.88, color:'#a0715b' },
-          { name:'Приспособление', x:0.88, y:0.10, color:'#b5916e' },
-          { name:'Избегание', x:0.10, y:0.10, color:'#8f7a68' },
-          { name:'Компромисс', x:0.48, y:0.48, color:'#c49a6c' },
-          { name:'Сотрудничество', x:0.88, y:0.88, color:'#7c9a7a' }
+          { x:0.10, y:0.88, color:'#a0715b' },  // Соперничество
+          { x:0.88, y:0.10, color:'#b5916e' },  // Приспособление
+          { x:0.10, y:0.10, color:'#8f7a68' },  // Избегание
+          { x:0.48, y:0.48, color:'#c49a6c' },  // Компромисс
+          { x:0.88, y:0.88, color:'#7c9a7a' }   // Сотрудничество
         ];
 
         points.forEach(p => {
-          let px = 100 + p.x * (w-160);
-          let py = (h-80) - p.y * (h-140) + 15;
+          let px = 70 + p.x * (w-110);
+          let py = (h-70) - p.y * (h-120) + 15;
           
-          // Круг
+          // Внешний круг
           ctx.beginPath();
-          ctx.arc(px, py, 18, 0, 2*Math.PI);
-          ctx.fillStyle = p.color + '30';
+          ctx.arc(px, py, 16, 0, 2*Math.PI);
+          ctx.fillStyle = p.color + '35';
           ctx.fill();
-          ctx.lineWidth = 3.5;
+          ctx.lineWidth = 3;
           ctx.strokeStyle = p.color;
           ctx.stroke();
           
@@ -556,31 +602,15 @@
           ctx.lineWidth = 2;
           ctx.strokeStyle = '#fff';
           ctx.stroke();
-          
-          // Название
-          ctx.font = '600 15px Segoe UI, sans-serif';
-          ctx.fillStyle = '#3f2e21';
-          
-          if (p.name === 'Соперничество') {
-            ctx.fillText(p.name, px + 25, py - 20);
-          } else if (p.name === 'Приспособление') {
-            ctx.fillText(p.name, px - 120, py + 35);
-          } else if (p.name === 'Избегание') {
-            ctx.fillText(p.name, px + 25, py + 35);
-          } else if (p.name === 'Компромисс') {
-            ctx.fillText(p.name, px + 25, py - 20);
-          } else if (p.name === 'Сотрудничество') {
-            ctx.fillText(p.name, px - 120, py - 20);
-          }
         });
 
-        // Метки осей
-        ctx.font = '500 13px Segoe UI';
+        // Метки низкая/высокая
+        ctx.font = '500 11px Segoe UI';
         ctx.fillStyle = '#8b6f58';
-        ctx.fillText('Низкая', 50, h-70);
-        ctx.fillText('Высокая', w-80, h-70);
-        ctx.fillText('Низкая', 50, 30);
-        ctx.fillText('Высокая', 50, h-140);
+        ctx.fillText('Низкая', 30, h-60);
+        ctx.fillText('Высокая', w-55, h-60);
+        ctx.fillText('Низкая', 30, 25);
+        ctx.fillText('Высокая', 30, h-130);
       }
       drawChart();
       window.addEventListener('resize', () => { drawChart(); });
