@@ -232,9 +232,9 @@
   <div class="slide active" id="slide1">
     <h1>📊 5 стратегий поведения в конфликте</h1>
     <div class="chart-container">
-      <canvas id="strategyChart" width="800" height="450" style="width:100%; height:auto;"></canvas>
+      <canvas id="strategyChart" width="800" height="460" style="width:100%; height:auto;"></canvas>
     </div>
-    <p style="text-align: center; margin-top: 12px; font-size: 15px; color: #6f5843;">
+    <p style="text-align: center; margin-top: 8px; font-size: 15px; color: #6f5843;">
       Модель Томаса-Килманна
     </p>
   </div>
@@ -422,11 +422,11 @@
       if (current < total - 1) { current++; updateSlide(current); }
     });
 
-    // График с чёткими подписями
+    // График с поднятыми нижними точками
     const canvas = document.getElementById('strategyChart');
     if (canvas) {
       const ctx = canvas.getContext('2d');
-      const w = 800, h = 450;
+      const w = 800, h = 460;
       canvas.width = w; canvas.height = h;
 
       function drawChart() {
@@ -503,15 +503,15 @@
         ctx.fillText('НИЗКАЯ', 50, h-80);
         ctx.fillText('ВЫСОКАЯ', w-100, h-80);
         ctx.fillText('НИЗКАЯ', 50, 45);
-        ctx.fillText('ВЫСОКАЯ', 50, h-180);
+        ctx.fillText('ВЫСОКАЯ', 50, h-190);
 
-        // Точки стратегий с ПРАВИЛЬНЫМИ координатами
+        // Точки — нижние подняты выше (y: 0.15 вместо 0.08)
         const points = [
-          { name:'СОПЕРНИЧЕСТВО', result:'Выигрыш-Проигрыш', x:0.08, y:0.90, color:'#a0715b' },
-          { name:'ПРИСПОСОБЛЕНИЕ', result:'Проигрыш-Выигрыш', x:0.90, y:0.08, color:'#b5916e' },
-          { name:'ИЗБЕГАНИЕ', result:'Проигрыш-Проигрыш', x:0.08, y:0.08, color:'#8f7a68' },
+          { name:'СОПЕРНИЧЕСТВО', result:'Выигрыш-Проигрыш', x:0.08, y:0.88, color:'#a0715b' },
+          { name:'ПРИСПОСОБЛЕНИЕ', result:'Проигрыш-Выигрыш', x:0.88, y:0.15, color:'#b5916e' },
+          { name:'ИЗБЕГАНИЕ', result:'Проигрыш-Проигрыш', x:0.08, y:0.15, color:'#8f7a68' },
           { name:'КОМПРОМИСС', result:'50/50', x:0.48, y:0.48, color:'#c49a6c' },
-          { name:'СОТРУДНИЧЕСТВО', result:'Выигрыш-Выигрыш', x:0.90, y:0.90, color:'#7c9a7a' }
+          { name:'СОТРУДНИЧЕСТВО', result:'Выигрыш-Выигрыш', x:0.88, y:0.88, color:'#7c9a7a' }
         ];
 
         points.forEach(p => {
@@ -540,32 +540,31 @@
           ctx.font = 'bold 14px Segoe UI, sans-serif';
           ctx.fillStyle = '#3a2c23';
           
-          // Подписи разнесены, чтобы не наслаивались
           if (p.name === 'СОПЕРНИЧЕСТВО') {
             ctx.fillText(p.name, px + 25, py - 15);
             ctx.font = '12px Segoe UI, sans-serif';
             ctx.fillStyle = '#6f5843';
             ctx.fillText(p.result, px + 25, py + 5);
           } else if (p.name === 'ПРИСПОСОБЛЕНИЕ') {
-            ctx.fillText(p.name, px - 140, py + 35);
+            ctx.fillText(p.name, px - 145, py + 5);
             ctx.font = '12px Segoe UI, sans-serif';
             ctx.fillStyle = '#6f5843';
-            ctx.fillText(p.result, px - 140, py + 52);
+            ctx.fillText(p.result, px - 145, py + 22);
           } else if (p.name === 'ИЗБЕГАНИЕ') {
-            ctx.fillText(p.name, px + 25, py + 35);
+            ctx.fillText(p.name, px + 25, py + 5);
             ctx.font = '12px Segoe UI, sans-serif';
             ctx.fillStyle = '#6f5843';
-            ctx.fillText(p.result, px + 25, py + 52);
+            ctx.fillText(p.result, px + 25, py + 22);
           } else if (p.name === 'КОМПРОМИСС') {
             ctx.fillText(p.name, px - 70, py - 20);
             ctx.font = '12px Segoe UI, sans-serif';
             ctx.fillStyle = '#6f5843';
             ctx.fillText(p.result, px - 45, py - 2);
           } else if (p.name === 'СОТРУДНИЧЕСТВО') {
-            ctx.fillText('⭐ ' + p.name, px - 150, py - 15);
+            ctx.fillText('⭐ ' + p.name, px - 155, py - 15);
             ctx.font = 'bold 12px Segoe UI, sans-serif';
             ctx.fillStyle = '#4a3729';
-            ctx.fillText(p.result, px - 140, py + 5);
+            ctx.fillText(p.result, px - 145, py + 5);
           }
         });
       }
