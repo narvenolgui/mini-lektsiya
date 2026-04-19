@@ -22,14 +22,12 @@
       padding: 16px 12px;
     }
 
-    /* Слайд-шоу контейнер */
     .slideshow {
       max-width: 900px;
       width: 100%;
       position: relative;
     }
 
-    /* Карточка слайда — фиксированная высота под экран */
     .slide {
       background: rgba(255, 255, 255, 0.85);
       backdrop-filter: blur(12px);
@@ -42,7 +40,7 @@
       border: 1px solid rgba(255, 255, 255, 0.5);
       display: none;
       height: 580px;
-      overflow-y: auto;  /* на всякий случай, если контент вылезет */
+      overflow-y: auto;
       transition: opacity 0.25s;
     }
 
@@ -50,7 +48,6 @@
       display: block;
     }
 
-    /* Навигация */
     .nav-controls {
       display: flex;
       align-items: center;
@@ -93,7 +90,6 @@
       backdrop-filter: blur(4px);
     }
 
-    /* Типографика */
     h1 {
       font-size: 34px;
       font-weight: 700;
@@ -110,13 +106,6 @@
       display: flex;
       align-items: center;
       gap: 10px;
-    }
-
-    h3 {
-      font-size: 21px;
-      font-weight: 600;
-      color: #4a3729;
-      margin: 14px 0 8px;
     }
 
     p {
@@ -140,7 +129,6 @@
       color: #624b37;
     }
 
-    /* График */
     .chart-container {
       margin: 8px 0 5px;
       text-align: center;
@@ -165,7 +153,6 @@
       font-size: 16px;
     }
 
-    /* Карточки стратегий */
     .strategy-card {
       background: white;
       border-radius: 30px;
@@ -203,7 +190,6 @@
       color: #5d411f;
     }
 
-    /* Мозг боксы */
     .brain-diagram {
       display: flex;
       gap: 14px;
@@ -219,7 +205,13 @@
       border: 1px solid #dbcdbc;
     }
 
-    /* Прокрутка внутри слайда (на всякий случай) */
+    .legend-tag {
+      background: #f0dbca;
+      padding: 6px 14px;
+      border-radius: 40px;
+      font-size: 16px;
+    }
+
     .slide::-webkit-scrollbar { width: 4px; }
     .slide::-webkit-scrollbar-thumb { background: #ccbbaa; border-radius: 10px; }
 
@@ -233,28 +225,28 @@
 </head>
 <body>
 <div class="slideshow">
-  <!-- СЛАЙД 1: График с 5 стратегиями (укрупнённые эмодзи) -->
+  <!-- СЛАЙД 1: График с 5 стратегиями -->
   <div class="slide active" id="slide1">
-    <h1 style="display: flex; gap: 8px;">📈 5 стратегий конфликта</h1>
-    <p class="tagline">Ось X: забота об интересах подростка · Ось Y: забота об интересах родителя</p>
+    <h1 style="display: flex; gap: 8px;">📈 5 стратегий поведения в конфликте</h1>
+    <p class="tagline">Модель Томаса-Килманна</p>
     <div class="chart-container">
       <canvas id="strategyChart" width="720" height="340" style="width:100%; height:auto; max-height:300px;"></canvas>
     </div>
     <div class="axis-labels">
-      <span>🧑‍🎤 Подросток (кооперация) →</span>
-      <span>⬆️ Родитель (напористость)</span>
+      <span>🧑‍🎤 Интересы подростка (кооперация) →</span>
+      <span>⬆️ Интересы родителя (напористость)</span>
     </div>
     <div style="margin-top: 14px; display: flex; flex-wrap: wrap; gap: 10px; justify-content: center;">
-      <span style="background:#f0dbca; padding:6px 14px; border-radius: 40px; font-size:16px;">🦈 Акула</span>
-      <span style="background:#f0dbca; padding:6px 14px; border-radius: 40px; font-size:16px;">🧸 Мишка</span>
-      <span style="background:#f0dbca; padding:6px 14px; border-radius: 40px; font-size:16px;">🐢 Черепаха</span>
-      <span style="background:#f0dbca; padding:6px 14px; border-radius: 40px; font-size:16px;">🦊 Лиса</span>
-      <span style="background:#e2d1be; padding:6px 18px; border-radius: 40px; font-weight:700; font-size:16px;">🦉 Сова ★</span>
+      <span class="legend-tag">🦈 Соперничество</span>
+      <span class="legend-tag">🧸 Приспособление</span>
+      <span class="legend-tag">🐢 Избегание</span>
+      <span class="legend-tag">🦊 Компромисс</span>
+      <span style="background:#e2d1be; padding:6px 18px; border-radius:40px; font-weight:700; font-size:16px;">🦉 Сотрудничество ★</span>
     </div>
     <div class="highlight" style="margin-top: 12px;">
       <span style="font-size: 26px; margin-right: 10px;">🧠</span> 
-      <strong>Сотрудничество (Сова)</strong> — единственная стратегия, где выигрывают оба.<br>
-      Остальные — либо проигрыш отношений, либо уступка с ущербом.
+      <strong>Сотрудничество</strong> — единственная стратегия, где выигрывают оба.<br>
+      Остальные ведут либо к проигрышу отношений, либо к уступкам с ущербом.
     </div>
   </div>
 
@@ -282,60 +274,60 @@
     <p style="margin-top: 14px;">🧘 Наша задача — не включаться в его тревогу, а стать «внешней префронтальной корой».</p>
   </div>
 
-  <!-- СЛАЙД 3: Акула -->
+  <!-- СЛАЙД 3: Соперничество -->
   <div class="slide" id="slide3">
-    <h2>🦈 Акула · Соперничество</h2>
+    <h2>🦈 Соперничество</h2>
     <div class="strategy-card">
       <div class="strategy-emoji">🦈</div>
-      <div><strong>Выиграл-Проиграл</strong> — родитель давит авторитетом.</div>
+      <div><strong>Выигрыш-Проигрыш</strong> — родитель давит авторитетом.</div>
     </div>
     <p>«Будешь дома в 21:00! Я сказал!»</p>
     <p>🔥 Подросток: бунт, саботаж, скрытая агрессия.<br>📉 Итог: граница соблюдена, контакт потерян.</p>
     <div class="highlight">⚠️ Амигдала родителя кричит «Надо контролировать!», а подростка — «Защищайся!»</div>
   </div>
 
-  <!-- СЛАЙД 4: Плюшевый мишка -->
+  <!-- СЛАЙД 4: Приспособление -->
   <div class="slide" id="slide4">
-    <h2>🧸 Плюшевый мишка · Приспособление</h2>
+    <h2>🧸 Приспособление</h2>
     <div class="strategy-card">
       <div class="strategy-emoji">🧸</div>
-      <div><strong>Проиграл-Выиграл</strong> — родитель уступает.</div>
+      <div><strong>Проигрыш-Выигрыш</strong> — родитель уступает.</div>
     </div>
     <p>«Ладно, иди до 23:00, только без скандала».</p>
     <p>😓 Подросток: «Родителей можно продавить».<br>💔 Родитель: чувство беспомощности, потеря авторитета.</p>
     <div class="highlight">🕊️ Иногда уступка нужна, но системно это размывает границы.</div>
   </div>
 
-  <!-- СЛАЙД 5: Черепаха -->
+  <!-- СЛАЙД 5: Избегание -->
   <div class="slide" id="slide5">
-    <h2>🐢 Черепаха · Избегание</h2>
+    <h2>🐢 Избегание</h2>
     <div class="strategy-card">
       <div class="strategy-emoji">🐢</div>
-      <div><strong>Проиграл-Проиграл</strong> — конфликт замораживается.</div>
+      <div><strong>Проигрыш-Проигрыш</strong> — конфликт замораживается.</div>
     </div>
     <p>«Делай что хочешь...» (уход в телефон, молчание).</p>
     <p>💢 Подросток чувствует себя брошенным, тревога растёт.<br>📴 Родитель остаётся в неведении.</p>
     <div class="highlight">🐚 Избегание копит напряжение, «пожарная сигнализация» не выключается.</div>
   </div>
 
-  <!-- СЛАЙД 6: Лиса -->
+  <!-- СЛАЙД 6: Компромисс -->
   <div class="slide" id="slide6">
-    <h2>🦊 Лиса · Компромисс</h2>
+    <h2>🦊 Компромисс</h2>
     <div class="strategy-card">
       <div class="strategy-emoji">🦊</div>
       <div><strong>Частичный выигрыш / 50/50</strong></div>
     </div>
     <p>«Давай в 22:00, по‑честному».</p>
     <p>🤝 Рабочий вариант для бытовых ситуаций.<br>⚖️ Но обе стороны чуть недополучили.</p>
-    <div class="highlight">🦊 Лиса — хороший тактический ход, но не всегда укрепляет доверие.</div>
+    <div class="highlight">🦊 Компромисс — хороший тактический ход, но не всегда укрепляет доверие.</div>
   </div>
 
-  <!-- СЛАЙД 7: Сова -->
+  <!-- СЛАЙД 7: Сотрудничество -->
   <div class="slide" id="slide7">
-    <h2>🦉 Сова · Сотрудничество <span class="badge badge-best">ВЫИГРАЛ-ВЫИГРАЛ</span></h2>
+    <h2>🦉 Сотрудничество <span class="badge badge-best">ВЫИГРЫШ-ВЫИГРЫШ</span></h2>
     <div class="strategy-card" style="border:2px solid #dac2a8;">
       <div class="strategy-emoji" style="background:#e4d5c4;">🦉</div>
-      <div><strong>Обсуждаем интересы, не позиции.</strong></div>
+      <div><strong>Обсуждаем интересы, а не позиции.</strong></div>
     </div>
     <p>💬 «Я вижу, тебе важно побыть с друзьями. И мне важно знать, что ты в безопасности. Как решим?»</p>
     <p>✨ Включается «кабинет директора» у обоих. Подросток учится договариваться.</p>
@@ -350,7 +342,7 @@
       <ul style="font-size: 18px; line-height: 1.9; list-style-type: none;">
         <li>✅ Не включаться в его «пожарную тревогу»</li>
         <li>✅ Говорить о своих чувствах (Я-высказывания)</li>
-        <li>✅ Искать решение вместе (стратегия Совы)</li>
+        <li>✅ Искать решение вместе (стратегия Сотрудничества)</li>
         <li>✅ Помнить: безопасность — условие для роста «коры»</li>
       </ul>
     </div>
@@ -390,7 +382,7 @@
       if (current < total - 1) { current++; updateSlide(current); }
     });
 
-    // График с УКРУПНЁННЫМИ эмодзи и подписями
+    // График с авторскими названиями
     const canvas = document.getElementById('strategyChart');
     if (canvas) {
       const ctx = canvas.getContext('2d');
@@ -429,28 +421,27 @@
         // Подписи осей
         ctx.font = '500 14px Segoe UI, sans-serif';
         ctx.fillStyle = '#5f4a38';
-        ctx.fillText('🧑‍🎤 Подросток (кооперация) →', w-230, h-35);
+        ctx.fillText('🧑‍🎤 Интересы подростка (кооперация) →', w-250, h-35);
         ctx.save();
         ctx.translate(30, 180);
         ctx.rotate(-Math.PI/2);
         ctx.font = '500 14px Segoe UI, sans-serif';
-        ctx.fillText('⬆️ Родитель (напористость)', 0, 0);
+        ctx.fillText('⬆️ Интересы родителя (напористость)', 0, 0);
         ctx.restore();
 
-        // Точки — эмодзи крупнее
+        // Точки с авторскими названиями
         const points = [
-          { name:'Акула', x:0.12, y:0.85, emoji:'🦈', color:'#a0715b' },
-          { name:'Мишка', x:0.88, y:0.12, emoji:'🧸', color:'#b5916e' },
-          { name:'Черепаха', x:0.12, y:0.12, emoji:'🐢', color:'#8f7a68' },
-          { name:'Лиса', x:0.5, y:0.5, emoji:'🦊', color:'#c49a6c' },
-          { name:'Сова', x:0.88, y:0.88, emoji:'🦉', color:'#7c9a7a' }
+          { name:'Соперничество', x:0.12, y:0.85, emoji:'🦈', color:'#a0715b' },
+          { name:'Приспособление', x:0.88, y:0.12, emoji:'🧸', color:'#b5916e' },
+          { name:'Избегание', x:0.12, y:0.12, emoji:'🐢', color:'#8f7a68' },
+          { name:'Компромисс', x:0.5, y:0.5, emoji:'🦊', color:'#c49a6c' },
+          { name:'Сотрудничество', x:0.88, y:0.88, emoji:'🦉', color:'#7c9a7a' }
         ];
 
         points.forEach(p => {
           let px = 80 + p.x * (w-130);
           let py = (h-60) - p.y * (h-100) + 15;
           
-          // круг побольше
           ctx.beginPath();
           ctx.arc(px, py, 20, 0, 2*Math.PI);
           ctx.fillStyle = p.color + '25';
@@ -459,25 +450,23 @@
           ctx.strokeStyle = p.color;
           ctx.stroke();
           
-          // ЭМОДЗИ КРУПНЕЕ
           ctx.font = '32px "Segoe UI Emoji", "Apple Color Emoji", "Noto Color Emoji", sans-serif';
           ctx.fillStyle = '#2f241c';
           ctx.fillText(p.emoji, px-18, py+12);
           
-          // Подпись крупнее
-          ctx.font = '600 15px Segoe UI, sans-serif';
+          ctx.font = '600 14px Segoe UI, sans-serif';
           ctx.fillStyle = '#3f2e21';
-          ctx.fillText(p.name, px-28, py-28);
+          ctx.fillText(p.name, px-45, py-28);
         });
 
         // Легенда
         ctx.font = '500 13px Segoe UI';
         ctx.fillStyle = '#6b4f3c';
-        ctx.fillText('Выиграл-Проиграл', 500, 45);
-        ctx.fillText('Проиграл-Выиграл', 150, 290);
-        ctx.fillText('Проиграл-Проиграл', 100, 55);
-        ctx.fillText('Компромисс', 340, 200);
-        ctx.fillText('⭐ Выиграл-Выиграл', 530, 290);
+        ctx.fillText('Выигрыш-Проигрыш', 480, 45);
+        ctx.fillText('Проигрыш-Выигрыш', 140, 290);
+        ctx.fillText('Проигрыш-Проигрыш', 100, 55);
+        ctx.fillText('Частичный выигрыш', 330, 200);
+        ctx.fillText('⭐ Выигрыш-Выигрыш', 530, 290);
       }
       drawChart();
       window.addEventListener('resize', () => { drawChart(); });
